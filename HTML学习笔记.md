@@ -41,6 +41,11 @@ title： HTML 文档的标题
 &lt;p&gt; 表示段落， paragraph <br> 
 &lt;em&gt; 重点强调， emphasis  <br> 
 &lt;strong&gt; 非常重要， strong importance <br> 
+&lt;dt&gt; description term 描述主体词
+
+&lt;dd&gt; description description 描述的描述语
+
+&lt;blockquote&gt; 块引用， 内有属性 cite，引用地址， 它不在页面显示，但会通过CSS和JavaScript作用。也可以使用&lt;cite&gt;元素来体现
 
 ## 还有一些是表象元素， 即它们没有任何语义，但是可以改变内容的形式
 &lt;i&gt; <i>被用来传达传统上用斜体表达的意义：外国文字，分类名称，技术术语，一种思想……<br></i>
@@ -48,11 +53,7 @@ title： HTML 文档的标题
 &lt;u&gt; <u>被用来传达传统上用下划线表达的意义：专有名词，拼写错误……<br></u>
 &lt;dl&gt; description list 描述列表
 
-&lt;dt&gt; description term 描述主体词
 
-&lt;ds&gt; description description 描述的描述语
-
-&lt;blockquote&gt; 块引用， 内有属性 cite，引用地址， 它不在页面显示，但会通过CSS和JavaScript作用。也可以使用&lt;cite&gt;元素来体现
 
 
 
