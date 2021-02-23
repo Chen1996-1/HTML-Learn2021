@@ -46,6 +46,14 @@ title： HTML 文档的标题
 &lt;i&gt; <i>被用来传达传统上用斜体表达的意义：外国文字，分类名称，技术术语，一种思想……<br></i>
 &lt;b&gt; <b>被用来传达传统上用粗体表达的意义：关键字，产品名称，引导句……<br></b>
 &lt;u&gt; <u>被用来传达传统上用下划线表达的意义：专有名词，拼写错误……<br></u>
+&lt;dl&gt; description list 描述列表
+
+&lt;dt&gt; description term 描述主体词
+
+&lt;ds&gt; description description 描述的描述语
+
+&lt;blockquote&gt; 块引用， 内有属性 cite，引用地址， 它不在页面显示，但会通过CSS和JavaScript作用。也可以使用&lt;cite&gt;元素来体现
+
 
 
 ## 链接与路径
