@@ -5,14 +5,37 @@
 </head>
 <body>
 	<h1>HTML中的图片</h1>
-	<<strong>&lt;img&gt; 和&lt;figure&gt;</strong>
-	<img src="img/basic-image.png" alt="一张恐龙的骨架" title="恐龙实例">
+	<h1>HTML中引入SVG代码</h1>
+	  <svg width="100%" height="100%">
+	    <rect width="100%" height="100%" fill="red" />
+	    <circle cx="100%" cy="100%" r="150" fill="blue" stroke="black" />
+	    <polygon points="120,0 240,225 0,225" fill="yellow"/>
+	    <text x="50" y="100" font-family="Verdana" font-size="55"
+	          fill="white" stroke="black" stroke-width="2">
+	            HTML 中的SVG 代码
+	    </text>
+	  </svg>
 
-	<figure><img src="img/basic-image.png" alt="一张恐龙的骨架"><figcaption>恐龙实例</figcaption></figure>
+	  <h1>HTML 中的自适应图片</h1>
+	  <img srcset="img/response-800.png 800w, img/response-480.png 480w, img/response-320.png 320w" sizes="(max-width: 800px) 340px, (max-width: 480px) 840px" src="img/response-800.png" alt="Response img 实例图片" >
+	  <p>根据不同的分辨率，显示不同的图片, 依然是&lt;img&gt;元素， 但是其中的属性，多了srcset 和 sizes</p>
+	  <dl>
+		<dt>srcset</dt>
+		<dd>这个属性定义了我们允许浏览器选择的图像集，以及每个图像的大小。 在每个逗号之前， 我们写：
+			<ol>
+				<li>一个文件名</li>
+				<li>一个空格</li>
+				<li>图像的固有宽度（以像素为单位）——注意这里使用的单位为 w ，而不是px</li>
+			</ol></dd>
+		<dt>sizes</dt>
+		<dd>这个属性定义了一组媒体条件， 并且指明了当某些媒体条件为真时， 什么样的图片尺寸是最佳选择——我们在之前已经讨论了一些提示。 在这种情况下，在每个逗号之前，我们写：
+			<ol>
+				<li>一个媒体条件（max-width:480px)——意思是当可视窗口的宽度小于等于480px时</li>
+				<li>一个空格</li>
+				<li>当媒体条件为真时， 图像将填充槽的宽度（440px)</li>
+			</ol></dd>
+	  </dl>
 
-	<h1>HTML中的音频与视频</h1>
-	<strong>&lt;video&gt; and &lt;audio&gt;</strong>
-	<<video src="video/SampleVideo_1280x720_1mb.mp4" controls poster="img/video.png"></video>
-
+	  
 </body>
 </html>
