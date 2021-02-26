@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
 	<title>HTML中的多媒体</title>
 </head>
 <body>
@@ -17,7 +19,13 @@
 	  </svg>
 
 	  <h1>HTML 中的自适应图片</h1>
-	  <img srcset="img/response-800.png 800w, img/response-480.png 480w, img/response-320.png 320w" sizes="(max-width: 800px) 340px, (max-width: 480px) 840px" src="img/response-800.png" alt="Response img 实例图片" >
+	  <img srcset="img/response-800.png 800w, 
+	  		img/response-480.png 480w, 
+	  		img/response-320.png 320w" 
+	  		sizes="(min-width: 600px) 500px,
+	  		(max-width: 480px) 340px" 
+	  src="img/response-480.png" 
+	  alt="Response img 实例图片" >
 	  <p>根据不同的分辨率，显示不同的图片, 依然是&lt;img&gt;元素， 但是其中的属性，多了srcset 和 sizes</p>
 	  <dl>
 		<dt>srcset</dt>
