@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盒模型宽度计算</title>
+  <style>
+    .box {
+      width: 800px;
+      padding:10px;
+      border: 1px solid red;
+      margin: 10px;
+      box-sizing: border-box;
+    }
+    .m {
+      font-size: 16px;
+      line-height: 1;
+      padding: 0px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+    }
+    h2 {
+      margin: 15px;
+      padding: 0px;
+
+    }
+    .margin {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <p>
+    offsetWidth = (内容宽度+内边距+边框), 无外边距
+    </p> 
+    <p>如果要offsetWidth = 100, 这个时候增加box-sizing : border-box, width:100px, 此时 width 指的就是 包含外边框的盒子的宽度</p>
+  </div>
+  <div class="margin">
+    <h2>margin 纵向重叠问题</h2>
+    <p class="m">first line</p>
+    <p class="m"></p>
+    <p class="m">求红色区域的高度=h2 +p +p +p +(margin-bottom*7)+ h2 = 32+15+16+15+16+15+16 = 125 </p>
+    <p class="m"></p>
+    <p class="m">last line</p>
+  </div>
+  <script>
+    alert(document.getElementsByClassName('box')[0].offsetWidth)
+  </script>
+</body>
+</html>
