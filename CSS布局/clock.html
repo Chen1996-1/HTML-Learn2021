@@ -22,29 +22,68 @@
   .clock-border {
     display: inline-block;
     position: relative;
-    border-bottom: .21rem solid black;
-    border-right: .21rem solid black;
   }
   .one {
-    top: -6rem;
-    left: 1rem;
-    height: 11rem;
-    width: 15rem; 
+    top: -13.2rem;
+    left: 16rem;
+    height: 9rem;
+    width: 0rem; 
+    border-right: .2rem solid black;
   }
   .two {  
-    top: -6rem;
-    width: 40rem;
+    top: 9rem;
+    left: -2.5rem;
+    height: 22rem;
+    width: 35rem;
+    border-top: .2rem solid black;
+    border-bottom: .2rem solid black;
   }
-  .three{  
-    top: -6rem;
-    width: 40rem;
+  .four {
+    top: -7.8rem;
+    left: 20rem;
+    height: 4.5rem;
+    width: 0rem;
+    border-right: .15rem solid black;
+  }
+  .five {
+    top: -7.8rem;
+    left: 3.2rem;
+    height: 0rem;
+    width: 12rem;
+    border-bottom: .15rem solid black;
+  }
+  .six {
+    top: -3.4rem;
+    left: -13.6rem;
+    height: 4.5rem;
+    width: 0rem;
+    border-left: .15rem solid black;
+  }
+  .text {
+    position: relative;
+  }
+  .per {
+    display: inline-block;
+    font-size: 4rem; 
+    top: -35rem;
+    left: -20rem;
+    padding: .2rem;
+
   }
 </style>
 <body>
   <div class="clock">
-    <div class="clock-border one"></div>
+    <div class="clock-border one">
+    </div>
     <div class="clock-border two"></div>
-    <div class="clock-border three"></div>
+    <div class="clock-border four"></div>
+    <div class="clock-border five"></div>
+    <div class="clock-border six"></div>
+
+    <div class="text per">80%<span></span></div>
+    <div class="text air"></div>
+    <div class="text sleep"></div>
+    <div class="text km"></div>
   </div>
 </body>
 </html>
