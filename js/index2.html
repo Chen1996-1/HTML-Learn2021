@@ -167,10 +167,9 @@
     while (arr != '') {
       // 从左往右 取首位元素为当前元素
       item = arr.shift()
-      // 判断当前元素是否为单个元素
+      // 判断当前元素是否为重复元素
       if (arr.indexOf(item)>-1 || reList.indexOf(item)>-1){
         reList.push(item)
-        // 在剩下的数组中遍历判断，找到和当前元素相同的那个数, 然后把它添加到 reList, 并从 arr中删除
         arr.forEach(element => {
           if (element == item) {
             reList.push(item)
