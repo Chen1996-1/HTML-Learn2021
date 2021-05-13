@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+  #one {
+    height: 100px;
+  }
+  #two {
+    position: relative;
+  }
+  #imgs-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    margin: 0 100px;
+    width: 400px;
+    height: 400px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+  }
+  .img {
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    box-sizing: border-box;
+  }
+  #cap-black {
+    position: absolute;
+    top: 50px;
+    left: 150px;
+    background-color: red;
+    height: 200px;
+    width: 200px;
+
+  }
+</style>
+</head>
+<body>
+  <div id="one">
+    <input id="inputList"> 输入列表
+    <button id="submitButton">提交</button>
+    <div id="output"></div>
+  </div>
+  <div id="two">
+    <div id="imgs-list" @mousemove="loadImges">
+      <div class="img" v-for="(img,index) in imgsList" :key="index">{{img}}</div>
+    </div>
+    <div id="cap-black" @mousemove="loadImges" @click="cancelMove" ref="cap"></div>
+    <button id="imgsload" style=height:40px;" @click="loadImges">点我</button>
+  </div>
+</body>
+<script>
+  var imgAp = new Vue({
+    el: '#two',
+    data(){
+      return {
+        imgsList:[]
+      }
+    },
+    methods: {
+      cancelMove(cl) {
+        const capEle = this.$refs['cap']
+        // cap.Ele.style.top = window.getComputedStyle(this.$refs['cap']).top
+        // cap.Ele.style.left= window.getComputedStyle(this.$refs['cap']).left
+        capEle.style.show = false
+      },
+      loadImges(el) {
+        const capEleSty = window.getComputedStyle(this.$refs['cap'])
+        const capEle = this.$refs.cap
+   
+        let x = eval(capEleSty.width.replace('px', ''))
+        let y =eval(capEleSty.height.replace('px',''))
+        console.log(x,y)
+
+        let tX = el.clientX  -100 
+        let lY = el.clientY -200 
+        if (lY<500 && tX<600) {
+        capEle.style.top = lY+'px'
+        capEle.style.left = tX+ 'px'
+        this.imgsList = [1,2,3]
+        }
+      }
+    },
+    mounted () {
+      console.log('mounted')
+      const capEle = this.$refs.cap.style.top
+      console.log(capEle)
+    } 
+  })
+
+
+  // const imgsList = document.getElementById('imgs-list')
+  // const imgsLoad = document.getElementById('imgsload')
+
+  // imgsLoad.onclick = function () {
+  //   createImges
+  // };
+  // function createImges() {
+
+  // }
+
+
+  const inputListEle = document.getElementById('inputList')
+  const submitEle = document.getElementById('submitButton')
+  const outputEle = document.getElementById('output')
+  // const listSour = [3,1,2,1,3,3,4,5,6,5]
+
+  submitEle.onclick = function (){ 
+    var listSour = inputListEle.value.split(',')
+    l = repList(listSour);
+    console.log(l);
+    outputEle.innerHTML = l
+
+  }
+
+  function repList (arr) {
+    var obj= {}
+    var onelist = []
+    var resultList = []
+
+    for (i=0; i< arr.length; i++) {
+      item = arr[i]
+      obj[item] = obj[item] + 1 || 1
+    
+      if (!(onelist.includes(item))) {
+        onelist.push(item)
+      }
+      else {
+        id = onelist.indexOf(item)
+        resultList[id]=item
+      }
+    }
+    var l = []
+    for (i=0; i<resultList.length; i++) {
+      item = resultList[i]
+      for (j = 0; j < obj[item]; j++){
+        l.push(item)
+      }
+    }
+    return l
+  }
+
+
+
+
+</script>
+</html>

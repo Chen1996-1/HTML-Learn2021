@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body {
+    font-size: 16rem;
+  }
+  .clock {
+    background-color: blanchedalmond;
+    width: 40rem;
+    height: 40rem;
+    border: 4rem solid black;
+    border-radius: 40rem;
+    margin: auto;
+    display: block;
+  }
+  .clock-border {
+    display: inline-block;
+    position: relative;
+  }
+  .one {
+    top: -13.2rem;
+    left: 16rem;
+    height: 9rem;
+    width: 0rem; 
+    border-right: .2rem solid black;
+  }
+  .two {  
+    top: 9rem;
+    left: -2.5rem;
+    height: 22rem;
+    width: 35rem;
+    border-top: .2rem solid black;
+    border-bottom: .2rem solid black;
+  }
+  .four {
+    top: -7.8rem;
+    left: 20rem;
+    height: 4.5rem;
+    width: 0rem;
+    border-right: .15rem solid black;
+  }
+  .five {
+    top: -7.8rem;
+    left: 3.2rem;
+    height: 0rem;
+    width: 12rem;
+    border-bottom: .15rem solid black;
+  }
+  .six {
+    top: -3.4rem;
+    left: -13.6rem;
+    height: 4.5rem;
+    width: 0rem;
+    border-left: .15rem solid black;
+  }
+  .text {
+    position: relative;
+  }
+  .per {
+    display: inline-block;
+    font-size: 4rem; 
+    top: -35rem;
+    left: -20rem;
+    padding: .2rem;
+
+  }
+</style>
+<body>
+  <div class="clock">
+    <div class="clock-border one">
+    </div>
+    <div class="clock-border two"></div>
+    <div class="clock-border four"></div>
+    <div class="clock-border five"></div>
+    <div class="clock-border six"></div>
+
+    <div class="text per">80%<span></span></div>
+    <div class="text air"></div>
+    <div class="text sleep"></div>
+    <div class="text km"></div>
+  </div>
+</body>
+</html>
