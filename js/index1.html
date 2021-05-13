@@ -76,30 +76,20 @@
   </div>
 </body>
 <script>
+  //  使用Vue 对 imgsList 做循环输出
   var imgAp = new Vue({
     el: '#two',
-    data(){
-      return {
-        imgsList:{
-
-        },
-        timer: null
-      }
+    data: {
+        imgsList:[]
     },
     methods: {
-      cancelMove(cl) {
-        // cap.Ele.style.top = window.getComputedStyle(this.$refs['cap']).top
-        // cap.Ele.style.left= window.getComputedStyle(this.$refs['cap']).left
-        this.show = false
-        // console.log('cancel')
-      },
-
       loadImges(el) {
+        //  获取 cap-black 元素 及其宽高
         const capEle = this.$refs.cap
         const capEleSty = window.getComputedStyle(this.$refs['cap'])
         const capWidth = eval(capEle.clientWidth)
         const capHeight =eval(capEle.clientHeight)
-
+        //  获取 imglist 元素 宽高， 相对窗口位置
         const imgsListEle = this.$refs.imgs
         const imgsListWidth= imgsListEle.clientWidth
         const imgsListHeight= imgsListEle.clientHeight
@@ -107,34 +97,34 @@
         const imgsListLFPointY= imgsListEle.getBoundingClientRect().y
         const imgsListRBPointX= imgsListLFPointX + imgsListWidth 
         const imgsListRBPointY= imgsListLFPointY + imgsListHeight
-
+        //  设置 图片长宽 100
         const imgeSize = 100
-      
 
-
-
-        
-
-        // console.log(capWidth, capHeight)
+        // 鼠标移动 坐标 
         let mouseX = el.clientX
         let mouseY = el.clientY
 
+        // 计算 cap-black 左上、 右下点坐标
         let capLTPointX = mouseX - capWidth/2
         let capLTPointY = mouseY - capHeight/2
         let capRBPointX = mouseX + capWidth/2
         let capRBPointY = mouseY + capHeight/2
 
+        // 限制 cap-black 跟随鼠标移动 范围
         if (mouseX >= (imgsListLFPointX-capWidth/3) && mouseX <= (imgsListRBPointX + capHeight/3) && mouseY >= (imgsListLFPointY - capWidth/3) && mouseY <= (imgsListRBPointY + capWidth/3)) {
             let tX = mouseX - capWidth/2
             let lY = mouseY - capHeight/2 - 100
+            // 通过 style 属性 改变 cap-black 位置
             capEle.style.top = lY +'px'
             capEle.style.left = tX + 'px'
+            // 计算 cap-black 左上到右下点坐标 与 imglist 元素 重合的范围
             let list = []
             let imgsLTX = (capLTPointX) <= imgsListLFPointX ? Math.floor(imgsListLFPointX/imgeSize) : Math.floor(capLTPointX/imgeSize)
             let imgsLTY = (capLTPointY) <= imgsListLFPointY ? Math.floor(imgsListLFPointY/imgeSize) : Math.floor(capLTPointY/imgeSize)
             let imgsRBX = (capRBPointX) >= imgsListRBPointX ? Math.floor(imgsListRBPointX/imgeSize): Math.ceil(capRBPointX/imgeSize)
             let imgsRBY = (capRBPointY) >= imgsListRBPointY ? Math.floor(imgsListRBPointY/imgeSize)  :Math.ceil(capRBPointY/imgeSize) 
 
+            // 范围内 循环 imgs个数 
             for (let i=imgsLTX; i< imgsRBX; i++) {
               for (let j=imgsLTY; j< imgsRBY; j++) {
                 
@@ -142,33 +132,39 @@
               }
             }
 
+            // 更新 imgsList 的值， 图片命名方式为 '行-列.png'
             this.imgsList= list.map((item) => {
             return item.join('-') + '.png'
             })
-
         }
       }
     },
   })
 
+//  使用JS写 重复数排序
 
-
+  // 获取需要的document 元素 
   const inputListEle = document.getElementById('inputList')
   const submitEle = document.getElementById('submitButton')
   const outputEle = document.getElementById('output')
   // const listSour = [3,1,2,1,3,3,4,5,6,5]
 
+  // 为 提交按钮添加 click  事件
   submitEle.onclick = function (){ 
+    // 获取 input 内容
     var listSour = inputListEle.value.split(',')
     l = repList(listSour);
     console.log(l);
+    // 渲染 document 元素
     outputEle.innerHTML = l
-
   }
 
   function repList (arr) {
+    // 创建一个对象， 用于存放 arr 中各数字的个数如：{2：1， 3：1}, 即代表 arr中有 1个2， 1个3 
     var obj= {}
+    // 创建一个列表， 用于存放，arr中所有数字的集合 (有排列顺序)
     var onelist = []
+    // 创建一个列表， 用于存放，arr 中重复数字的集合（有排列顺序）
     var resultList = []
 
     for (i=0; i< arr.length; i++) {
@@ -180,9 +176,10 @@
       }
       else {
         id = onelist.indexOf(item)
-        resultList[id]=item
+        resultList[id]=item // 根据 重复item 在onelist 中的 索引，确定 item 在 resultList 中的位置
       }
     }
+    // 创建一个空列表, 对 arr中重复数字的集合进行循环， 重复的个数，从 obj 对象中获取，然后依次push到 该列表中，最后返回
     var l = []
     for (i=0; i<resultList.length; i++) {
       item = resultList[i]
