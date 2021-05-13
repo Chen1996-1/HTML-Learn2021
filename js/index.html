@@ -63,8 +63,10 @@
     },
     methods: {
       cancelMove(cl) {
-        let el = cl.target
-        document.removeEventListener('mousemove', el);
+        const capEle = this.$refs['cap']
+        // cap.Ele.style.top = window.getComputedStyle(this.$refs['cap']).top
+        // cap.Ele.style.left= window.getComputedStyle(this.$refs['cap']).left
+        capEle.style.show = false
       },
       loadImges(el) {
         const capEleSty = window.getComputedStyle(this.$refs['cap'])
@@ -76,10 +78,11 @@
 
         let tX = el.clientX  -100 
         let lY = el.clientY -200 
-
+        if (lY<500 && tX<600) {
         capEle.style.top = lY+'px'
         capEle.style.left = tX+ 'px'
         this.imgsList = [1,2,3]
+        }
       }
     },
     mounted () {
